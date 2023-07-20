@@ -1,5 +1,9 @@
 :root {
-  --cellsize: 1px;
+  --border-color: #7f7f7f;
+  --cellwidth: 1px;
+
+  --axis-thickness: 5px;
+  --axis-distance: 5px;
 }
 
 body {
@@ -22,18 +26,17 @@ body {
 }
 
 .table {
-  width: calc(var(--cellsize) * 256);
-  height: calc(var(--cellsize) * 256);
-}
-
-.grid {
+  width: calc(var(--cellwidth) * 256);
+  height: calc(var(--cellwidth) * 256);
   display: grid;
   grid-template-columns: repeat(256, 1fr);
+  position: relative;
+  border: 1px solid var(--border-color);
 }
 
 .cell {
-  width: var(--cellsize);
-  height: var(--cellsize);
+  width: var(--cellwidth);
+  height: calc(var(--cellwidth) * 256);
 }
 
 .slider {
@@ -42,4 +45,26 @@ body {
   align-items: center;
   gap: 10px;
   margin-top: 20px;
+}
+
+.axis {
+  position: absolute;
+  border: 1px solid var(--border-color);
+}
+
+.red {
+  writing-mode: vertical-rl;
+  top: -1px;
+  left: calc(var(--axis-distance) * -1 - var(--axis-thickness) - 2px);
+  width: var(--axis-thickness);
+  height: calc(var(--cellwidth) * 256);
+  background: linear-gradient(#000000, #ff0000);
+}
+
+.green {
+  left: -1px;
+  top: calc(var(--axis-distance) * -1 - var(--axis-thickness) - 2px);
+  height: var(--axis-thickness);
+  width: calc(var(--cellwidth) * 256);
+  background: linear-gradient(to right, #000000, #00ff00);
 }

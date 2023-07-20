@@ -3,23 +3,21 @@ import React, { useState } from 'react';
 function App() {
   const [blue, setBlue] = useState(0);
 
-  const redAndGreenValues = [];
+  const greenValues = [];
 
   for (let i = 0; i < 256; i++) {
-    for (let j = 0; j < 256; j++) {
-      redAndGreenValues.push([i, j]);
-    }
+    greenValues.push(i);
   }
 
   return (
     <div className="wrapper">
-      <div>
-        <div className="table grid">
-          {redAndGreenValues.map(([red, green]) => <div
-            className="cell"
-            style={{ backgroundColor: `rgb(${red}, ${green}, ${blue})` }}
-            key={red * 256 + green}></div>)}
-        </div>
+      <div className="table">
+        <div className="red axis"></div>
+        <div className="green axis"></div>
+        {greenValues.map(green => <div
+          className="cell"
+          style={{ background: `linear-gradient(rgb(0, ${green}, ${blue}), rgb(255, ${green}, ${blue}))` }}
+          key={green}></div>)}
       </div>
       <div className="slider">
         <span>Blue:</span>
