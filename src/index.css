@@ -26,10 +26,8 @@ body {
 }
 
 .table {
-  width: calc(var(--cellwidth) * 256);
-  height: calc(var(--cellwidth) * 256);
-  display: grid;
-  grid-template-columns: repeat(256, 1fr);
+  width: min-content;
+  display: flex;
   position: relative;
   border: 1px solid var(--border-color);
 }
